@@ -1,3 +1,6 @@
+evaluate(new File("job1.groovy"))
+evaluate(new File("job2.groovy"))
+
 listView('githubView') {
     jobs {
       name('viprenis-rule-packager')
