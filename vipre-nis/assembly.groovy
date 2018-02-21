@@ -2,8 +2,12 @@
 println()
 println(WORKSPACE)
 
-evaluate(new File("job1.groovy"))
-evaluate(new File("job2.groovy"))
+def vipreNisDir = WORKSPACE + "viprenis"
+
+println(vipreNisDir)
+
+evaluate(new File(vipreNisDir + File.separator + "job1.groovy"))
+evaluate(new File(vipreNisDir + File.separator + "job2.groovy"))
 
 listView('githubView') {
     jobs {
