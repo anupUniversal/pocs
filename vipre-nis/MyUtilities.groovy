@@ -1,4 +1,4 @@
-package utilities
+
 
 class MyUtilities {
     static void addMyFeature(def job) {
