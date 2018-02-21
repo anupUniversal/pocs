@@ -1,5 +1,6 @@
 
-echo WORKSPACE
+println()
+println(WORKSPACE)
 
 evaluate(new File("job1.groovy"))
 evaluate(new File("job2.groovy"))
