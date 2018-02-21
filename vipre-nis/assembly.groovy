@@ -2,7 +2,7 @@
 println()
 println(WORKSPACE)
 
-def vipreNisDir = WORKSPACE + "viprenis"
+def vipreNisDir = WORKSPACE + File.separator + "viprenis"
 
 println(vipreNisDir)
 
