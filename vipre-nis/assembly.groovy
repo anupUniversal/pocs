@@ -10,7 +10,7 @@ println(vipreNisDir)
 //evaluate(new File(vipreNisDir + File.separator + "job2.groovy"))
 
 def vipreRPT = "VipreRulePackagerTest.groovy"
-def vipreRP "VipreRulePackager.groovy"
+def vipreRP = "VipreRulePackager.groovy"
 
 def vipreNisRPTest = 'viprenis-rules-packager-fortest'
 def vipreNisRP = 'viprenis-rules-packager'
