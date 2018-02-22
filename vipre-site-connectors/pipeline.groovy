@@ -19,6 +19,7 @@ job('vipre-site-connectors') {
             buildsThisYear(null)
             buildsAllTime(null)
             //skipFailedBuilds(false)
+            worstResultForIncrement()
         }
     }
 	
