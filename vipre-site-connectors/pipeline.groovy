@@ -7,17 +7,7 @@ job('vipre-site-connectors') {
 	wrappers {
 		colorizeOutput()
         timestamps()
-        versionNumberCreator{
-            major(1)
-            minor(1)
-            patch(1)
-            revision(1)
-            incrementOnFailure(false)
-            includePatchNumber(true)
-            suffix()
-        }
-
-        /*versionNumberBuilder {
+        versionNumberBuilder {
             versionNumberString('1.0.0')
             environmentVariableName('VERSION')
             useAsBuildDisplayName(true)
@@ -29,7 +19,7 @@ job('vipre-site-connectors') {
             buildsThisYear(null)
             buildsAllTime(null)
             //skipFailedBuilds(false)
-        }*/
+        }
     }
 	
 	multiscm {
