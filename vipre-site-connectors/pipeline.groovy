@@ -22,7 +22,7 @@ job('vipre-site-connectors') {
     steps {
         msBuild {
             msBuildInstallation('MSBuild 1.28')
-            buildFile('source\VipreConnectors.sln')
+            buildFile('source/VipreConnectors.sln')
             args()
             passBuildVariables()
             continueOnBuildFailure()
