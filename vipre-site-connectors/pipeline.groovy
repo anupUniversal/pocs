@@ -7,6 +7,7 @@ job('vipre-site-connectors') {
 	wrappers {
 		colorizeOutput()
         timestamps()
+        // https://issues.jenkins-ci.org/browse/JENKINS-34085
         versionNumberBuilder {
             versionNumberString('1.0.0')
             environmentVariableName('VERSION')
@@ -34,10 +35,10 @@ job('vipre-site-connectors') {
 
     steps {
         
-        changeassemblyversion {
+        /*changeassemblyversion {
             versionPattern('${VERSION_NUMBER}')
             assemblyFile()
-        }
+        }*/
 
         msBuild {
             msBuildInstallation('MSBuild 1.28')
