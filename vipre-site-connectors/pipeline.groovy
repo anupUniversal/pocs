@@ -7,7 +7,7 @@ job('vipre-site-connectors') {
 	wrappers {
 		colorizeOutput()
         timestamps()
-        versionNumberCreator{
+        /*versionNumberCreator{
             major(1)
             minor(1)
             patch(1)
@@ -15,6 +15,20 @@ job('vipre-site-connectors') {
             incrementOnFailure(false)
             includePatchNumber(true)
             suffix()
+        }*/
+
+        versionNumberBuilder {
+            versionNumberString('1.0.0')
+            environmentVariableName('VERSION')
+            useAsBuildDisplayName(true)
+            projectStartDate('2012-05-04')
+            environmentPrefixVariable(null)
+            buildsToday(null)
+            buildsThisWeek(null)
+            buildsThisMonth(null)
+            buildsThisYear(null)
+            buildsAllTime(null)
+            skipFailedBuilds(false)
         }
     }
 	
