@@ -7,7 +7,15 @@ job('vipre-site-connectors') {
 	wrappers {
 		colorizeOutput()
         timestamps()
-        deliveryPipelineVersion('1.0.${BUILD_NUMBER}', true)
+        versionNumberCreator{
+            major(1)
+            minor(1)
+            patch(1)
+            revision(1)
+            incrementOnFailure(false)
+            includePatchNumber(true)
+            suffix()
+        }
     }
 	
 	multiscm {
@@ -20,6 +28,12 @@ job('vipre-site-connectors') {
     }
 
     steps {
+        
+        changeassemblyversion {
+            versionPattern('${VERSION_NUMBER}')
+            assemblyFile()
+        }
+
         msBuild {
             msBuildInstallation('MSBuild 1.28')
             buildFile('source/VipreConnectors.sln')
