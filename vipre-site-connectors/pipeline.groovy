@@ -36,7 +36,12 @@ job('vipre-site-connectors') {
                 'incrementOnFailure'(false)
             }
         }
-	
+    
+    configure {
+        it / 'builders' / 'hudson.plugins.msbuild.MsBuildBuilder'(plugin: "msbuild@1.28") {
+        }
+    }
+    
 	multiscm {
         git {
             remote {
@@ -48,10 +53,10 @@ job('vipre-site-connectors') {
 
     steps {
         
-        /*changeassemblyversion {
+        changeassemblyversion {
             versionPattern('${VERSION_NUMBER}')
             assemblyFile()
-        }*/
+        }
 
         msBuild {
             msBuildInstallation('MSBuild 1.28')
