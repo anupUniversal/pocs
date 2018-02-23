@@ -8,7 +8,7 @@ job('vipre-site-connectors') {
 		colorizeOutput()
         timestamps()
         // https://issues.jenkins-ci.org/browse/JENKINS-34085
-        versionNumberBuilder {
+        /*versionNumberBuilder {
             versionNumberString('1.0.0')
             environmentVariableName('VERSION')
             useAsBuildDisplayName(true)
@@ -21,12 +21,12 @@ job('vipre-site-connectors') {
             buildsAllTime(null)
             //skipFailedBuilds(false)
             worstResultForIncrement(null)
-        }
+        }*/
 
     }
 
     configure {
-            it / 'wrappers' / 'com.gfi.jenkins.versioning.VersionNumberCreator'(plugin: "versioning-plugin@1.1.0") {
+            it / 'buildWrappers' / 'com.gfi.jenkins.versioning.VersionNumberCreator'(plugin: "versioning-plugin@1.1.0") {
                 'major'(1)
                 'minor'(1)
                 'patch'(1)
