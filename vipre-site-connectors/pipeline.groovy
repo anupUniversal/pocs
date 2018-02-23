@@ -22,6 +22,18 @@ job('vipre-site-connectors') {
             //skipFailedBuilds(false)
             worstResultForIncrement(null)
         }
+
+        configure {
+            it / 'com.gfi.jenkins.versioning.VersionNumberCreator(plugin: "versioning-plugin@1.1.0")' {
+                'major'(1)
+                'minor'(1)
+                'patch'(1)
+                'revision'(10)
+                'suffix'()
+                'includePatchNumber'(true)
+                'incrementOnFailure'(false)
+            }
+        }
     }
 	
 	multiscm {
