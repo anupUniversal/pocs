@@ -23,8 +23,10 @@ job('vipre-site-connectors') {
             worstResultForIncrement(null)
         }
 
-        configure {
-            it / 'com.gfi.jenkins.versioning.VersionNumberCreator(plugin: "versioning-plugin@1.1.0")' {
+    }
+
+    configure {
+            it / 'wrappers' / com.gfi.jenkins.versioning.VersionNumberCreator(plugin: "versioning-plugin@1.1.0") {
                 'major'(1)
                 'minor'(1)
                 'patch'(1)
@@ -34,7 +36,6 @@ job('vipre-site-connectors') {
                 'incrementOnFailure'(false)
             }
         }
-    }
 	
 	multiscm {
         git {
