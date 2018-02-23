@@ -41,6 +41,15 @@ job('vipre-site-connectors') {
         it / 'builders' / 'hudson.plugins.msbuild.MsBuildBuilder'(plugin: "msbuild@1.28") {
         }
     }
+
+    configure {
+        it / 'builders' / 'org.jenkinsci.plugins.changeassemblyversion.ChangeAssemblyVersion'(plugin: "change-assembly-version-plugin@1.5.1") {
+            'versionPattern'('${VERSION_NUMBER}')
+            'assemblyFile'()
+            'regexPattern'()
+            'replacementPattern'()
+        }
+    }
     
 	multiscm {
         git {
@@ -53,10 +62,10 @@ job('vipre-site-connectors') {
 
     steps {
         
-        changeassemblyversion {
+        /*changeassemblyversion {
             versionPattern('${VERSION_NUMBER}')
             assemblyFile()
-        }
+        }*/
 
         msBuild {
             msBuildInstallation('MSBuild 1.28')
