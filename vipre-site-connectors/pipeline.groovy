@@ -1,6 +1,7 @@
 
 job('vipre-site-connectors') {
 
+    def recipientEmailList = ['Zachary.Scolaro@vipre.com', 'Nelson.Toro@jalasoft.com', 'Marcel.Morales@jalasoft.com']
     label('vs2017&&wix')
 	description('')
 	
@@ -22,26 +23,20 @@ job('vipre-site-connectors') {
             //skipFailedBuilds(false)
             worstResultForIncrement(null)
         }*/
-
     }
 
     configure {
-            it / 'buildWrappers' / 'com.gfi.jenkins.versioning.VersionNumberCreator'(plugin: "versioning-plugin@1.1.0") {
-                'major'(1)
-                'minor'(1)
-                'patch'(1)
-                'revision'(10)
-                'suffix'()
-                'includePatchNumber'(true)
-                'incrementOnFailure'(false)
-            }
+        it / 'buildWrappers' / 'com.gfi.jenkins.versioning.VersionNumberCreator'(plugin: "versioning-plugin@1.1.0") {
+            'major'(1)
+            'minor'(1)
+            'patch'(1)
+            'revision'(10)
+            'suffix'()
+            'includePatchNumber'(true)
+            'incrementOnFailure'(false)
         }
+    }
     
-    configure {
-        it / 'builders' / 'hudson.plugins.msbuild.MsBuildBuilder'(plugin: "msbuild@1.28") {
-        }
-    }
-
     configure {
         it / 'builders' / 'org.jenkinsci.plugins.changeassemblyversion.ChangeAssemblyVersion'(plugin: "change-assembly-version-plugin@1.5.1") {
             'versionPattern'('${VERSION_NUMBER}')
@@ -50,6 +45,12 @@ job('vipre-site-connectors') {
             'replacementPattern'()
         }
     }
+
+    /*configure {
+        it / 'builders' / 'hudson.plugins.msbuild.MsBuildBuilder'(plugin: "msbuild@1.28") {
+        }
+    }*/
+
     
 	multiscm {
         git {
@@ -79,9 +80,13 @@ job('vipre-site-connectors') {
 	
    publishers {
         extendedEmail {
-            recipientList('Zachary.Scolaro@vipre.com')
+            /*recipientList('Zachary.Scolaro@vipre.com')
             recipientList('Nelson.Toro@jalasoft.com')
-            recipientList('Marcel.Morales@jalasoft.com')
+            recipientList('Marcel.Morales@jalasoft.com')*/
+            recipientList(*(recipientEmailList))
+            defaultSubject('$DEFAULT_SUBJECT')
+            defaultContent('$DEFAULT_CONTENT')
+			attachBuildLog(true)
             defaultSubject('$DEFAULT_SUBJECT')
             defaultContent('$DEFAULT_CONTENT')
 			attachBuildLog(true)
